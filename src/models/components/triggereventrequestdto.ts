@@ -14,7 +14,9 @@ import * as z from "zod";
  *     If a new actor object is provided, we will create a new subscriber in our system
  *
  */
-export type Actor = SubscriberPayloadDto | string;
+export type TriggerEventRequestDtoActor = SubscriberPayloadDto | string;
+
+export type Controls = {};
 
 /**
  * This could be used to override provider specific configurations
@@ -49,6 +51,8 @@ export type TriggerEventRequestDto = {
      *
      */
     actor?: SubscriberPayloadDto | string | undefined;
+    bridgeUrl?: string | undefined;
+    controls?: Controls | undefined;
     /**
      * The trigger identifier of the workflow you wish to send. This identifier can be found on the workflow page.
      */
@@ -83,17 +87,22 @@ export type TriggerEventRequestDto = {
 };
 
 /** @internal */
-export namespace Actor$ {
-    export const inboundSchema: z.ZodType<Actor, z.ZodTypeDef, unknown> = z.union([
-        SubscriberPayloadDto$.inboundSchema,
-        z.string(),
-    ]);
+export namespace TriggerEventRequestDtoActor$ {
+    export const inboundSchema: z.ZodType<TriggerEventRequestDtoActor, z.ZodTypeDef, unknown> =
+        z.union([SubscriberPayloadDto$.inboundSchema, z.string()]);
 
     export type Outbound = SubscriberPayloadDto$.Outbound | string;
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Actor> = z.union([
-        SubscriberPayloadDto$.outboundSchema,
-        z.string(),
-    ]);
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TriggerEventRequestDtoActor> =
+        z.union([SubscriberPayloadDto$.outboundSchema, z.string()]);
+}
+
+/** @internal */
+export namespace Controls$ {
+    export const inboundSchema: z.ZodType<Controls, z.ZodTypeDef, unknown> = z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Controls> = z.object({});
 }
 
 /** @internal */
@@ -156,6 +165,8 @@ export namespace TriggerEventRequestDto$ {
     export const inboundSchema: z.ZodType<TriggerEventRequestDto, z.ZodTypeDef, unknown> = z.object(
         {
             actor: z.union([SubscriberPayloadDto$.inboundSchema, z.string()]).optional(),
+            bridgeUrl: z.string().optional(),
+            controls: z.lazy(() => Controls$.inboundSchema).optional(),
             name: z.string(),
             overrides: z.lazy(() => TriggerEventRequestDtoOverrides$.inboundSchema).optional(),
             payload: z.lazy(() => TriggerEventRequestDtoPayload$.inboundSchema).optional(),
@@ -173,6 +184,8 @@ export namespace TriggerEventRequestDto$ {
 
     export type Outbound = {
         actor?: SubscriberPayloadDto$.Outbound | string | undefined;
+        bridgeUrl?: string | undefined;
+        controls?: Controls$.Outbound | undefined;
         name: string;
         overrides?: TriggerEventRequestDtoOverrides$.Outbound | undefined;
         payload?: TriggerEventRequestDtoPayload$.Outbound | undefined;
@@ -184,6 +197,8 @@ export namespace TriggerEventRequestDto$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TriggerEventRequestDto> =
         z.object({
             actor: z.union([SubscriberPayloadDto$.outboundSchema, z.string()]).optional(),
+            bridgeUrl: z.string().optional(),
+            controls: z.lazy(() => Controls$.outboundSchema).optional(),
             name: z.string(),
             overrides: z.lazy(() => TriggerEventRequestDtoOverrides$.outboundSchema).optional(),
             payload: z.lazy(() => TriggerEventRequestDtoPayload$.outboundSchema).optional(),
