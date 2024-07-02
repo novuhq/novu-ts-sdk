@@ -3,13 +3,9 @@
 
 ## Values
 
-| Name                   | Value                  |
-| ---------------------- | ---------------------- |
-| `Feed`                 | Feed                   |
-| `MessageTemplate`      | MessageTemplate        |
-| `Layout`               | Layout                 |
-| `DefaultLayout`        | DefaultLayout          |
-| `NotificationTemplate` | NotificationTemplate   |
-| `NotificationGroup`    | NotificationGroup      |
-| `TranslationGroup`     | TranslationGroup       |
-| `Translation`          | Translation            |
+| Name           | Value          |
+| -------------- | -------------- |
+| `None`         | none           |
+| `User`         | user           |
+| `SystemIcon`   | system_icon    |
+| `SystemCustom` | system_custom  |

@@ -1,14 +1,14 @@
 lockVersion: 2.0.0
 id: f50499c4-d106-4975-983f-ead3a386ec53
 management:
-  docChecksum: 1eadec3f5478d02504091b0e2b5b2ee0
+  docChecksum: 8096226f9420d148b9be3a78a571ba7d
   docVersion: "1.0"
-  speakeasyVersion: 1.322.3
-  generationVersion: 2.354.2
-  releaseVersion: 0.0.1-alpha.9
-  configChecksum: 29fb899ef19d96629eaf20333f0647b0
-  repoURL: https://github.com/novuhq/novu-node.git
-  installationURL: https://github.com/novuhq/novu-node
+  speakeasyVersion: 1.325.0
+  generationVersion: 2.356.0
+  releaseVersion: 0.0.1-alpha.10
+  configChecksum: 1d1be144f185ba843a22cb66a72f0cb5
+  repoURL: https://github.com/novuhq/novu-ts.git
+  installationURL: https://github.com/novuhq/novu-ts
   published: true
 features:
   typescript:
@@ -34,7 +34,6 @@ generatedFiles:
   - src/sdk/changes.ts
   - src/sdk/apikeys.ts
   - src/sdk/environments.ts
-  - src/sdk/events.ts
   - src/sdk/executiondetails.ts
   - src/sdk/feeds.ts
   - src/sdk/webhooks.ts
@@ -87,6 +86,7 @@ generatedFiles:
   - src/types/operations.ts
   - src/types/rfcdate.ts
   - tsconfig.json
+  - src/models/components/databooleandto.ts
   - src/models/components/triggereventresponsedto.ts
   - src/models/components/triggereventrequestdto.ts
   - src/models/components/subscriberpayloaddto.ts
@@ -94,17 +94,26 @@ generatedFiles:
   - src/models/components/channelcredentialsdto.ts
   - src/models/components/topicpayloaddto.ts
   - src/models/components/tenantpayloaddto.ts
+  - src/models/components/triggereventtoallrequestdto.ts
+  - src/models/components/bulktriggereventdto.ts
   - src/models/components/changeresponsedto.ts
   - src/models/components/bulkapplychangedto.ts
   - src/models/components/datanumberdto.ts
   - src/models/components/changesresponsedto.ts
   - src/models/components/environmentresponsedto.ts
   - src/models/components/apikey.ts
-  - src/models/components/databooleandto.ts
-  - src/models/components/triggereventtoallrequestdto.ts
-  - src/models/components/bulktriggereventdto.ts
   - src/models/components/executiondetailsresponsedto.ts
   - src/models/components/feedresponsedto.ts
+  - src/models/components/notificationdto.ts
+  - src/models/components/subscriberresponsedto.ts
+  - src/models/components/channelsettings.ts
+  - src/models/components/channelcredentials.ts
+  - src/models/components/messagecta.ts
+  - src/models/components/messagectadata.ts
+  - src/models/components/messageaction.ts
+  - src/models/components/messageactionresult.ts
+  - src/models/components/messagebutton.ts
+  - src/models/components/actor.ts
   - src/models/components/createfeedrequestdto.ts
   - src/models/components/integrationresponsedto.ts
   - src/models/components/credentialsdto.ts
@@ -141,9 +150,6 @@ generatedFiles:
   - src/models/components/memberresponsedto.ts
   - src/models/components/memberuserdto.ts
   - src/models/components/memberinvitedto.ts
-  - src/models/components/subscriberresponsedto.ts
-  - src/models/components/channelsettings.ts
-  - src/models/components/channelcredentials.ts
   - src/models/components/createsubscriberrequestdto.ts
   - src/models/components/bulksubscribercreatedto.ts
   - src/models/components/deletesubscriberresponsedto.ts
@@ -164,11 +170,6 @@ generatedFiles:
   - src/models/components/delayscheduledmetadata.ts
   - src/models/components/preferencechannels.ts
   - src/models/components/notificationgroup.ts
-  - src/models/components/messagecta.ts
-  - src/models/components/messagectadata.ts
-  - src/models/components/messageaction.ts
-  - src/models/components/messageactionresult.ts
-  - src/models/components/messagebutton.ts
   - src/models/components/emailblock.ts
   - src/models/components/emailblockstyles.ts
   - src/models/components/markmessageactionasseendto.ts
@@ -202,9 +203,9 @@ generatedFiles:
   - src/models/components/variablesresponsedto.ts
   - src/models/components/changeworkflowstatusrequestdto.ts
   - src/models/components/security.ts
+  - src/models/operations/eventscontrollercancel.ts
   - src/models/operations/changescontrollerapplydiff.ts
   - src/models/operations/changescontrollergetchanges.ts
-  - src/models/operations/eventscontrollercancel.ts
   - src/models/operations/executiondetailscontrollergetexecutiondetailsfornotification.ts
   - src/models/operations/feedscontrollerdeletefeedbyid.ts
   - src/models/operations/integrationscontrollerremoveintegration.ts
@@ -264,9 +265,11 @@ generatedFiles:
   - src/models/errors/index.ts
   - src/models/components/index.ts
   - src/models/operations/index.ts
+  - docs/models/components/databooleandto.md
   - docs/models/components/triggereventresponsedtostatus.md
   - docs/models/components/triggereventresponsedto.md
-  - docs/models/components/actor.md
+  - docs/models/components/triggereventrequestdtoactor.md
+  - docs/models/components/controls.md
   - docs/models/components/triggereventrequestdtooverrides.md
   - docs/models/components/triggereventrequestdtopayload.md
   - docs/models/components/tenant.md
@@ -281,8 +284,14 @@ generatedFiles:
   - docs/models/components/topicpayloaddto.md
   - docs/models/components/tenantpayloaddtodata.md
   - docs/models/components/tenantpayloaddto.md
+  - docs/models/components/triggereventtoallrequestdtoactor.md
+  - docs/models/components/triggereventtoallrequestdtooverrides.md
+  - docs/models/components/triggereventtoallrequestdtopayload.md
+  - docs/models/components/triggereventtoallrequestdtotenant.md
+  - docs/models/components/triggereventtoallrequestdto.md
+  - docs/models/components/bulktriggereventdto.md
   - docs/models/components/change.md
-  - docs/models/components/type.md
+  - docs/models/components/changeresponsedtotype.md
   - docs/models/components/changeresponsedto.md
   - docs/models/components/bulkapplychangedto.md
   - docs/models/components/datanumberdto.md
@@ -290,18 +299,32 @@ generatedFiles:
   - docs/models/components/apikeys.md
   - docs/models/components/environmentresponsedto.md
   - docs/models/components/apikey.md
-  - docs/models/components/databooleandto.md
-  - docs/models/components/triggereventtoallrequestdtoactor.md
-  - docs/models/components/triggereventtoallrequestdtooverrides.md
-  - docs/models/components/triggereventtoallrequestdtopayload.md
-  - docs/models/components/triggereventtoallrequestdtotenant.md
-  - docs/models/components/triggereventtoallrequestdto.md
-  - docs/models/components/bulktriggereventdto.md
   - docs/models/components/executiondetailsresponsedtochannel.md
   - docs/models/components/executiondetailsresponsedtosource.md
   - docs/models/components/executiondetailsresponsedtostatus.md
   - docs/models/components/executiondetailsresponsedto.md
   - docs/models/components/feedresponsedto.md
+  - docs/models/components/notificationdtochannel.md
+  - docs/models/components/notificationdtooverrides.md
+  - docs/models/components/notificationdtopayload.md
+  - docs/models/components/notificationdtostatus.md
+  - docs/models/components/notificationdto.md
+  - docs/models/components/subscriberresponsedto.md
+  - docs/models/components/channelsettingsproviderid.md
+  - docs/models/components/channelsettings.md
+  - docs/models/components/channelcredentials.md
+  - docs/models/components/messagectatype.md
+  - docs/models/components/messagecta.md
+  - docs/models/components/messagectadata.md
+  - docs/models/components/messageactionstatus.md
+  - docs/models/components/messageaction.md
+  - docs/models/components/messageactionresultpayload.md
+  - docs/models/components/messageactionresulttype.md
+  - docs/models/components/messageactionresult.md
+  - docs/models/components/messagebuttontype.md
+  - docs/models/components/messagebutton.md
+  - docs/models/components/type.md
+  - docs/models/components/actor.md
   - docs/models/components/createfeedrequestdto.md
   - docs/models/components/integrationresponsedtochannel.md
   - docs/models/components/integrationresponsedto.md
@@ -367,10 +390,6 @@ generatedFiles:
   - docs/models/components/memberresponsedto.md
   - docs/models/components/memberuserdto.md
   - docs/models/components/memberinvitedto.md
-  - docs/models/components/subscriberresponsedto.md
-  - docs/models/components/channelsettingsproviderid.md
-  - docs/models/components/channelsettings.md
-  - docs/models/components/channelcredentials.md
   - docs/models/components/data.md
   - docs/models/components/createsubscriberrequestdto.md
   - docs/models/components/bulksubscribercreatedto.md
@@ -424,16 +443,6 @@ generatedFiles:
   - docs/models/components/delayscheduledmetadata.md
   - docs/models/components/preferencechannels.md
   - docs/models/components/notificationgroup.md
-  - docs/models/components/messagectatype.md
-  - docs/models/components/messagecta.md
-  - docs/models/components/messagectadata.md
-  - docs/models/components/messageactionstatus.md
-  - docs/models/components/messageaction.md
-  - docs/models/components/messageactionresultpayload.md
-  - docs/models/components/messageactionresulttype.md
-  - docs/models/components/messageactionresult.md
-  - docs/models/components/messagebuttontype.md
-  - docs/models/components/messagebutton.md
   - docs/models/components/emailblocktype.md
   - docs/models/components/emailblock.md
   - docs/models/components/textalign.md
@@ -482,9 +491,9 @@ generatedFiles:
   - docs/models/components/variablesresponsedto.md
   - docs/models/components/changeworkflowstatusrequestdto.md
   - docs/models/components/security.md
+  - docs/models/operations/eventscontrollercancelrequest.md
   - docs/models/operations/changescontrollerapplydiffrequest.md
   - docs/models/operations/changescontrollergetchangesrequest.md
-  - docs/models/operations/eventscontrollercancelrequest.md
   - docs/models/operations/executiondetailscontrollergetexecutiondetailsfornotificationrequest.md
   - docs/models/operations/feedscontrollerdeletefeedbyidrequest.md
   - docs/models/operations/integrationscontrollerremoveintegrationrequest.md
@@ -557,7 +566,6 @@ generatedFiles:
   - docs/sdks/changes/README.md
   - docs/sdks/environments/README.md
   - docs/sdks/apikeys/README.md
-  - docs/sdks/events/README.md
   - docs/sdks/executiondetails/README.md
   - docs/sdks/feeds/README.md
   - docs/sdks/integrations/README.md

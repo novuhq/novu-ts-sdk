@@ -1,12 +1,12 @@
 {
   "name": "@novu/api",
-  "version": "0.0.1-alpha.9",
+  "version": "0.0.1-alpha.10",
   "author": "Novu",  
   "main": "./index.js",
   "sideEffects": false,
   "repository": {
     "type": "git",
-    "url": "https://github.com/novuhq/novu-node.git"
+    "url": "https://github.com/novuhq/novu-ts.git"
   },
   "scripts": {
     "lint": "eslint --max-warnings=0 src",

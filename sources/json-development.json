@@ -1054,21 +1054,23 @@ components:
       type: object
     FeedResponseDto:
       properties:
-        _environmentId:
-          type: string
-        _id:
-          type: string
-        _organizationId:
-          type: string
-        identifier:
-          type: string
-        name:
-          type: string
+        data:
+          items:
+            $ref: '#/components/schemas/NotificationDto'
+          type: array
+        hasMore:
+          type: boolean
+        page:
+          type: number
+        pageSize:
+          type: number
+        totalCount:
+          type: number
       required:
-        - name
-        - identifier
-        - _environmentId
-        - _organizationId
+        - hasMore
+        - data
+        - pageSize
+        - page
       type: object
     FieldFilterPart:
       properties:
@@ -2213,6 +2215,10 @@ components:
             - description: Unique identifier of a subscriber in your systems
               type: string
             - $ref: '#/components/schemas/SubscriberPayloadDto'
+        bridgeUrl:
+          type: string
+        controls:
+          type: object
         name:
           description: The trigger identifier of the workflow you wish to send. This identifier can be found on the workflow page.
           example: workflow_identifier
@@ -3151,7 +3157,10 @@ paths:
       summary: Cancel triggered event
       tags:
         - Events
+      x-speakeasy-group: ""
       x-speakeasy-name-override: cancel
+      x-speakeasy-usage-example:
+        title: Cancel Triggered Event
   /v1/events/trigger/broadcast:
     post:
       description: |-
@@ -3204,7 +3213,10 @@ paths:
       summary: Broadcast event to all
       tags:
         - Events
+      x-speakeasy-group: ""
       x-speakeasy-name-override: triggerBroadcast
+      x-speakeasy-usage-example:
+        title: Broadcast Event to All
   /v1/events/trigger/bulk:
     post:
       description: "\n      Using this endpoint you can trigger multiple events at once, to avoid multiple calls to the API.\n      The bulk API is limited to 100 events per request.\n    "
@@ -3251,7 +3263,10 @@ paths:
       summary: Bulk trigger event
       tags:
         - Events
+      x-speakeasy-group: ""
       x-speakeasy-name-override: triggerBulk
+      x-speakeasy-usage-example:
+        title: Trigger Notification Events in Bulk
   /v1/execution-details:
     get:
       operationId: ExecutionDetailsController_getExecutionDetailsForNotification

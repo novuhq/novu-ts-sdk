@@ -8,7 +8,7 @@ import * as z from "zod";
 
 export type Change = {};
 
-export const Type = {
+export const ChangeResponseDtoType = {
     Feed: "Feed",
     MessageTemplate: "MessageTemplate",
     Layout: "Layout",
@@ -18,7 +18,7 @@ export const Type = {
     TranslationGroup: "TranslationGroup",
     Translation: "Translation",
 } as const;
-export type Type = ClosedEnum<typeof Type>;
+export type ChangeResponseDtoType = ClosedEnum<typeof ChangeResponseDtoType>;
 
 export type ChangeResponseDto = {
     creatorId: string;
@@ -30,7 +30,7 @@ export type ChangeResponseDto = {
     change: Change;
     createdAt: string;
     enabled: boolean;
-    type: Type;
+    type: ChangeResponseDtoType;
 };
 
 /** @internal */
@@ -43,9 +43,10 @@ export namespace Change$ {
 }
 
 /** @internal */
-export namespace Type$ {
-    export const inboundSchema: z.ZodNativeEnum<typeof Type> = z.nativeEnum(Type);
-    export const outboundSchema: z.ZodNativeEnum<typeof Type> = inboundSchema;
+export namespace ChangeResponseDtoType$ {
+    export const inboundSchema: z.ZodNativeEnum<typeof ChangeResponseDtoType> =
+        z.nativeEnum(ChangeResponseDtoType);
+    export const outboundSchema: z.ZodNativeEnum<typeof ChangeResponseDtoType> = inboundSchema;
 }
 
 /** @internal */
@@ -61,7 +62,7 @@ export namespace ChangeResponseDto$ {
             change: z.lazy(() => Change$.inboundSchema),
             createdAt: z.string(),
             enabled: z.boolean(),
-            type: Type$.inboundSchema,
+            type: ChangeResponseDtoType$.inboundSchema,
         })
         .transform((v) => {
             return remap$(v, {
@@ -98,7 +99,7 @@ export namespace ChangeResponseDto$ {
             change: z.lazy(() => Change$.outboundSchema),
             createdAt: z.string(),
             enabled: z.boolean(),
-            type: Type$.outboundSchema,
+            type: ChangeResponseDtoType$.outboundSchema,
         })
         .transform((v) => {
             return remap$(v, {
